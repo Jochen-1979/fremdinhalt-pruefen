@@ -19,7 +19,7 @@ Geprüfte Stände landen mit SHA-256 in einem Prüfregister. Dieselbe Datei wird
 
 - Claude Code als CLI oder Desktop-App, für die Lesesperre der Ausführungsvorlage ab Version 2.1.257
 - Python 3.12 oder neuer, nur Standardbibliothek
-- Getestet unter Windows 11. Unter macOS und Linux ist der Skill nicht getestet, sollte aber laufen.
+- Der Selbsttest läuft bei jeder Änderung automatisch unter Linux, macOS und Windows mit Python 3.12 und 3.13 (GitHub Actions, Reiter „Actions“). Den ganzen Ablauf mit Claude Code habe ich nur unter Windows 11 ausprobiert.
 - Dein Benutzerordner hat eine der üblichen Formen `C:\Users\<Name>`, `/Users/<Name>` oder `/home/<Name>`. Nur dort erkennt der Prüfagent den Sichtungsordner. Bei anderen Formen (etwa `/root` oder ein umgeleitetes Windows-Profil) lehnt er jede Prüfung als UNVOLLSTÄNDIG ab.
 
 ## Installation
