@@ -1,0 +1,5 @@
+{
+  "format": 1,
+  "hinweis": "Prüfregister des Skills fremdinhalt-pruefen. Wird nie als Skill-Anweisung geladen; scan.py liest es und gibt daraus nur Datum, Name, Art, Ampel und Entscheidung aus. Pflichtfelder: datum, name, art (Datei/Ordner), quelle, ampel (GRUEN/GELB/ROT), entscheidung (offen, freigegeben, freigegeben-mit-rahmen, nur-entschaerfte-kopie, verworfen) und sha256 (64 Hex, klein). Freie Felder: bytes, befund, entscheidung_details.",
+  "eintraege": []
+}
