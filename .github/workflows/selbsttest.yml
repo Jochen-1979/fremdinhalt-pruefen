@@ -1,0 +1,39 @@
+name: Selbsttest
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  selbsttest:
+    name: ${{ matrix.os }} / Python ${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python: ["3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Selbsttest
+        run: python -B -X utf8 -I .claude/skills/fremdinhalt-pruefen/scripts/testsatz.py
+      - name: Leeres Register lesbar
+        run: python -B -X utf8 -I .claude/skills/fremdinhalt-pruefen/scripts/scan.py --register-liste
+      - name: Scan auf das eigene Repo
+        shell: bash
+        run: |
+          set +e
+          python -B -X utf8 -I .claude/skills/fremdinhalt-pruefen/scripts/scan.py README.md
+          code=$?
+          echo "Exit $code"
+          if [ "$code" -ge 3 ]; then exit 1; fi
